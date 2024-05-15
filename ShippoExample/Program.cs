@@ -15,7 +15,7 @@ namespace ShippoExample
             ShippoCollection<CarrierAccount> carrierAccounts = resource.AllCarrierAccount();
             string defaultCarrierAccount = "";
             foreach (CarrierAccount account in carrierAccounts) {
-                if (account.Carrier.ToString() == "usps")
+                if (account.Carrier.ToString() == "ups")
                     defaultCarrierAccount = account.ObjectId;
             }
 
@@ -38,7 +38,7 @@ namespace ShippoExample
 
         private static void RunTrackingExample(APIResource resource)
         {
-            Track track = resource.RetrieveTracking("usps", TRACKING_NO);
+            Track track = resource.RetrieveTracking("ups", TRACKING_NO);
             Console.WriteLine("Carrier = " + track.Carrier.ToUpper());
             Console.WriteLine("Tracking number = " + track.TrackingNumber);
         }
@@ -77,7 +77,7 @@ namespace ShippoExample
             // replace with your Shippo Token
             // don't have one? get more info here
             // (https://goshippo.com/docs/#overview)
-            APIResource resource = new APIResource("<Shippo Token>");
+            APIResource resource = new APIResource("shippo_test_43ab7acab2707d5157c2b77372b4e02c0bde6807");
 			// to address
             Hashtable toAddressTable = new Hashtable();
             toAddressTable.Add("name", "Mr. Hippo");
@@ -92,15 +92,15 @@ namespace ShippoExample
 
             // from address
             Hashtable fromAddressTable = new Hashtable();
-            fromAddressTable.Add("name", "Ms Hippo");
-            fromAddressTable.Add("company", "San Diego Zoo");
-            fromAddressTable.Add("street1", "2920 Zoo Drive");
-            fromAddressTable.Add("city", "San Diego");
-            fromAddressTable.Add("state", "CA");
-            fromAddressTable.Add("zip", "92101");
-            fromAddressTable.Add("country", "US");
-            fromAddressTable.Add("email", "hippo@goshipppo.com");
-            fromAddressTable.Add("phone", "+1 619 231 1515");
+            fromAddressTable.Add("name", "Caframo Limited");
+            fromAddressTable.Add("company", "Caframo Limited");
+            fromAddressTable.Add("street1", "501273 Grey Road 1");
+            fromAddressTable.Add("city", "Georgian Bluffs");
+            fromAddressTable.Add("state", "ON");
+            fromAddressTable.Add("zip", "N0H2T0");
+            fromAddressTable.Add("country", "CA");
+            fromAddressTable.Add("email", "jbrus@caframo.com");
+            fromAddressTable.Add("phone", "+1 519 534 1080");
             fromAddressTable.Add("metadata", "Customer ID 123456");
 
             // parcel
@@ -144,14 +144,14 @@ namespace ShippoExample
                 Console.WriteLine("An Error has occured while generating your label. Messages : " + transaction.Messages);
             }
 
-            Console.WriteLine("\nBatch\n");
-            RunBatchExample(resource);
+            //Console.WriteLine("\nBatch\n");
+            //RunBatchExample(resource);
 
-            Console.WriteLine("\nTrack\n");
-            RunTrackingExample(resource);
+            //Console.WriteLine("\nTrack\n");
+            //RunTrackingExample(resource);
 
-            Console.WriteLine("\nValidating International Address\n");
-            RunInternationalAddressValidationExample(resource);
+            //Console.WriteLine("\nValidating International Address\n");
+            //RunInternationalAddressValidationExample(resource);
         }
 
     }
