@@ -58,7 +58,7 @@ namespace Shippo {
             WebRequest req = (WebRequest) WebRequest.Create(url);
             req.Method = method;
             if (req is HttpWebRequest) {
-                ((HttpWebRequest) req).UserAgent = user_agent;
+                ((HttpWebRequest)req).Headers["User-Agent"] = user_agent;
             }
 
             /* ENABLE BLOCK FOR BASIC AUTH
